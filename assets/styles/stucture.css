@@ -1,4 +1,4 @@
-body {
+  body {
     background-color: #ececec;
   }
   
@@ -32,6 +32,7 @@ body {
     transform: translate(-50%, -50%);
     width: 31%;
     height: 46%;
+    min-width:300px;
   }
   
   #logo-github {
@@ -92,6 +93,9 @@ body {
     border-color: #d6d5d6;
     border-width: 0.5px;
   }
+  .button-auth:hover {
+    background-color: rgb(202, 195, 195);
+  }
 
   .auth-text {
     position: relative;
@@ -113,6 +117,9 @@ body {
     margin-left: -29px;
 
     border-radius: 8px;
-    border-color: #266be5;
-    border-width: 0.5px;
+    border-color: #1d4ea3;
+    border-width: 2px;
+  }
+  .button-auth-email:hover {
+    background-color: #295cb4;
   }

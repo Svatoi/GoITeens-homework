@@ -2,6 +2,17 @@
     background-color: #ececec;
   }
   
+  #myVideo {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 620px;
+  }
+
   #block-or {
     display: flex;
     align-items: center;
@@ -9,7 +20,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: -27px;
+    margin-top: -35px;
   }
   
   #block-email {
@@ -17,7 +28,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: 60px;
+    margin-top: 50px;
     margin-left: 30px;
     width: 300px;
   }
@@ -30,8 +41,8 @@
     /* flex-direction: column;
     align-items: center; */
     transform: translate(-50%, -50%);
-    width: 31%;
-    height: 46%;
+    width: 18%;
+    height: 260px;
     min-width:300px;
   }
   
@@ -87,7 +98,7 @@
 
     width: 280px;
     height: 48px;
-    margin-top: -80px;
+    margin-top: -90px;
 
     border-radius: 8px;
     border-color: #d6d5d6;

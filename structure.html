@@ -2,6 +2,11 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="assets/styles/stucture.css">
+        <script>
+            function clicc(){
+             document.body.innerHTML = "<div><video autoplay loop id='myVideo'><source src='assets/image/20241108_TentativeMushyElephantSoBayed-H_3b9V9Bm7g62GSS_source.mp4' type='video/mp4'></video></div>"
+            }
+            </script>
     </head>
     <body>
         <div id="block-auth" class="bg-white">
@@ -22,8 +27,8 @@
 
             <div id="block-email">
                 <h3 class="title">Email</h3>
-                <input id="email-input" type="email" placeholder="   email@example.com">
-                <button class="button-auth-email">Sign in with Email</button>
+                <input id="email-input" type="email" placeholder="  email@example.com">
+                <button class="button-auth-email", onclick="clicc()">Sign in with Email</button>
             </div>
         </div>
     </body>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+        <title>Sign Up</title>
+            <link 
+            rel="icon"
+            type="image/x-icon"
+            href="static/images/owo2.webp"/>
+    
+        <link rel="stylesheet" type="text/css" href="static/styles/stucture.css"/>
+        <script src="static/script.js"></script>    </head>
+    <body class="body-flex">
+        <div id="block-auth" class="bg-white">
+            <button class="buttons-auth button-auth">
+                <img id="logo-github" src="./static/image/github.png" alt="Logo"/>
+                <span class="auth-text">Sign up with GitHub</span>
+            </button>
+
+            <div id="block-or">
+                <div class="line"></div>
+                <span class="add-text">or</span>
+                <div class="line"></div>
+            </div>
+
+            <div id="block-email">
+                <h3 class="title">Почта</h3>
+                <input type="email" placeholder="email@example.com">
+            </div>
+
+            <div id="block-username">
+                <h3 class="title">Нікнейм</h3>
+                <input type="text" placeholder="Введіть свій нікнейм">
+            </div>
+
+            <div id="block-password">
+                <h3 class="title">Пароль</h3>
+                <input type="password" placeholder="Введіть пароль">
+            </div>
+
+            <button class="buttons-auth button-email">Sign Up</button>
+
+            <div id="block-signin">
+                <p>Може в тебе вже є акаунт? <a href="/login">Sign in here</a></p>
+            </div>
+        </div>
+    </body>
+</html>

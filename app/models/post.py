@@ -10,7 +10,7 @@ class Post(db.Model, ModelMixin):
     )
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.String, nullable=True)
-    image = db.Column(db.String(150))
-    created_at = db.Column(db.Date, default=datetime.now(), nullable=False)
+    image = db.Column(db.String(150), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
 
     user = db.relationship("User", back_populates="posts")

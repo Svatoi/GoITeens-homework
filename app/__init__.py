@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template
 # LoginManager - для працювання з користувачами а саме запис їх сеансів
 from flask_login import LoginManager
@@ -16,8 +17,7 @@ def create_app(environment="development"):
 
     app = Flask(__name__)
 
-
-    env = environment
+    env = os.getenv("FLASK_ENV", environment)
     app.config.from_object(config[env])
     config[env].configure(app)
 

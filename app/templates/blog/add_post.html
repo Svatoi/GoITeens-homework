@@ -11,14 +11,18 @@
             <div class="col-md-6">
                 <div class="offer-container">
                     <div class="form-group">
-                        <img
-                        class="non-selectable"
-                        src="{{ url_for('static', filename='images/logo.jpg') }}"
-                        alt="image_of_photo"
-                        />
-                        <p class="text-muted mb-0">{{ form.image.label }} {% for error in form.errors.image %}</p>
-                        <small class="text-danger">{{error}}</small>
-                        {% endfor %}
+                        <label for="input-file" id="drop-area">
+                            <p class="text-muted mb-0">
+                                <div id="img-view">
+                                    <img src="#" alt="Drop">
+                                    <br><input type="file" accept="image/*" id="input-file">
+                                    <span><br>{{ form.image.label }}</span>
+                                </div>
+                            </p>
+                                {% for error in form.errors.image %}
+                            <small class="text-danger">{{error}}</small>
+                            {% endfor %}
+                        </label>
                     </div>
                 </div>
                 <div class="form-group"> 

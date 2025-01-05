@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired, Optional
+from wtforms import StringField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, Optional, Length
 
-class AddPost(FlaskForm):
-    title = StringField("Назва пост", [DataRequired()])
-    content = StringField("Опис", [DataRequired()])
-    image = StringField("Добавте фото або відео", [Optional()])
+class PostForm(FlaskForm):
+    title = StringField("Назва пост", [DataRequired(), Length(4, 125)])
+    content = TextAreaField("Опис", [DataRequired(), Length(4, 256)])
+    image = StringField("Завантажуйте будь-які зображення", [Optional()])
 
     submit = SubmitField("Зробити пост")

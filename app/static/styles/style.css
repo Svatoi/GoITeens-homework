@@ -1,38 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 body {
-    margin: 0;
-    padding: 0;
+  font-family: "Montserrat", serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 
-    display: flex;
-    flex-direction: column;
+  background-color: #d3a56a !important;
+  background-image: url('../images/bg-site.jpg');
+  background-repeat: repeat;
 
-    min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
 }
 
 ul {
-    list-style-type: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  
-a {
-    color: inherit !important;
-    text-decoration: none !important;
+  list-style-type: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
+
+a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Error */
+
+.error-code {
+  font-size: 92pt;
+}
+
+.error-description {
+  font-size: 14pt;
+  max-width: 60ch;
+  text-align: center;
+}
+
+/* Header */
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #F5DEB3;
-    padding-inline: 1em;
-    padding-block: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em 10em;
+  padding-block: 0.5em;
+  padding-inline: 3em;
+
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+
+  border-radius: 2em;
 }
 
-.footer {
-    background-color: #F5DEB3;
-    margin-top: auto;
+.logo img {
+  height: 3em;
+  width: auto;
 }
 
 .auth-buttons {
-    display: flex;
-    gap: 0.8em;
+  display: flex;
+  gap: 0.5em;
+}
+
+.avatar img {
+  width: 50px;
+  height: 50px;
+}
+
+.header-info {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.custom-dropdown-menu {
+  margin-top: 25px !important;
+  position: relative;
+}
+
+.custom-dropdown-menu .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+/* Content */
+
+.alert {
+  z-index: -1 !important;
+}
+
+/* Footer */
+
+.footer {
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em 9em;
+}
+
+.footer-line {
+  width: 100%;
+  border-top: 2px solid #a4a4a4;
+  margin-bottom: 1em;
+}
+
+.footer-networks {
+  display: flex;
+  gap: 1em;
+}
+
+.footer-networks img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Add post */
+.offer-container {
+  border: 2px dashed #b1b2ce;
+  border-radius: 5px;
+
+  margin-left: 40px;
+  padding: 20px;
+  text-align: center;
+
+  min-width: 70vh;
+  min-height: 100px;
+
+  background-color: #ffffff;
+}
+
+.offer-container:hover {
+  background-color: #2d3133;
+  border: 2px dashed #b1b2ce;
+  cursor: pointer;
+}
+
+.offer-title {
+  border: 2px dashed #b1b2ce;
+  border-radius: 5px;
+
+  margin-left: 50px;
+  padding: 20px;
+  text-align: center;
+
+  background-color: #ffffff;
+}
+
+.offer-description {
+  border: 2px dashed #b1b2ce;
+  border-radius: 5px;
+
+  margin-left: 40px;
+  padding: 20px;
+  text-align: center;
+
+  min-width: 70vh;
+  min-height: 250px;
+
+  background-color: #ffffff;
+}
+
+/* Posts */
+
+.form-card {
+  border-radius: 15px;
+  background-color: #fdfaf4;
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.card-custom {
+  border-radius: 10px;
+  overflow: hidden;
+  color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-custom:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  font-size: 0.875rem;
+  color: #ffffff;
+}
+
+.btn-outline-light {
+  border-radius: 10px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 5px 10px;
+  font-size: 0.875rem;
+}
+
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* General */
+
+.non-selectable {
+  user-select: none;
+  pointer-events: none;
+}
+
+.active {
+  font-weight: 700;
+}
+
+.custom-btn-dark:hover {
+  background-color: transparent !important;
+  color: #212529 !important;
+  border: 1px solid #212529 !important;
 }

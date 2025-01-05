@@ -1,3 +1,41 @@
 <footer class="footer">
+  <div class="footer-line"></div>
 
+  <div class="d-flex justify-content-between align-items-center px-5">
+    <div>
+      © <span id="current-year"></span> Flask Blog. All Rights Reserved.
+    </div>
+    <div class="footer-networks">
+      <a
+        href="https://www.instagram.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="{{url_for('static', filename='images/networks/logo-instagram.svg') }}"
+          alt="Instagram Logo"
+        />
+      </a>
+      <a
+        href="https://www.linkedin.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="{{url_for('static', filename='images/networks/logo-linkedin.svg') }}"
+          alt="LinkedIn Logo"
+        />
+      </a>
+      <a
+        href="https://www.facebook.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="{{url_for('static', filename='images/networks/logo-facebook.svg') }}"
+          alt="Facebook Logo"
+        />
+      </a>
+    </div>
+  </div>
 </footer>

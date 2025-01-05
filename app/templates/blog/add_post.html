@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block content%} 
+
+<form
+    class="form"
+    role="form"
+    action="{{ url_for('blog.add_post') }}"
+    method="post"
+>
+<div class="d-flex justify-content-center align-items-center container py-4" style="opacity: 0.7">
+        <div class="row align-items-center mt-5">
+            <div class="col-md-6">
+                <div class="offer-container">
+                    <div class="form-group">
+                        <img
+                        class="non-selectable"
+                        src="{{ url_for('static', filename='images/logo.jpg') }}"
+                        alt="image_of_photo"
+                        />
+                        <p class="text-muted mb-0">{{ form.image.label }} {% for error in form.errors.image %}</p>
+                        <small class="text-danger">{{error}}</small>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-group"> 
+                    {{ form.title(class='form-control offer-title mt-4', placeholder='Назва посту') }} 
+                    {% for error in form.errors.title %}
+                        <small class="text-danger">{{error}}</small>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.content(class='form-control offer-description mt-4', placeholder='Опишіть свій пост') }}
+                    {% for error in form.errors.content %}
+                        <small class="text-danger">{{error}}</small>
+                    {% endfor %}
+                </div>
+
+                <div class="text-end mt-4">
+                    {{ form.submit(class='btn btn-outline-dark rounded-3 px-4 py-2 mt-3', style='min-width: 100px; min-height: 50px;') }}
+                </div>
+            </div>
+        </div>
+</div>
+</form>
+
+{% endblock%}

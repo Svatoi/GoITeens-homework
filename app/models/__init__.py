@@ -1,4 +1,2 @@
-from .posts import Posts
-from .user import User
-from .like import Like
-from .comment import Comment
+from .post import Post
+from .user import User, AnonymousUser

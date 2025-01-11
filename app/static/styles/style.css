@@ -348,9 +348,8 @@ a {
 }
 
 .user-blog {
-  width: 100%;
+  width: 800px;
   height: 550px;
-  max-width: 800px;
   
   padding: 2rem;
   margin: 2rem auto;

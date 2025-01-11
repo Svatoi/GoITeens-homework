@@ -44,6 +44,11 @@ def signup():
         flash("The given data was invalid.", "danger")
     return render_template("auth/signup.html", form=form)
 
+@auth_bp.route('/logout')
+def logout():
+    logout_user() 
+    return redirect(url_for('index'))
+
 @auth_bp.route("/settings", methods=["GET", "POST"])
 def settings():
     user = User.query.get(current_user.id)

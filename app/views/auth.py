@@ -52,6 +52,7 @@ def settings():
     if form.validate_on_submit():
         user.name = form.name.data
         user.email = form.email.data
+        user.about = form.about.data
         user.save()
 
         flash("Profile has been successfully updated", "info")
@@ -61,4 +62,5 @@ def settings():
     elif request.method == "GET":
         form.name.data = user.name
         form.email.data = user.email
+        form.about.data = user.about
     return render_template("auth/settings.html", form=form)

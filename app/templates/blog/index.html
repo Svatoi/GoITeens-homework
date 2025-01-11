@@ -22,31 +22,32 @@
             <div class="row g-4 justify-content-center">
                 {% for post in posts | sort(attribute="created_at", reverse=True) %}
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card shadow-sm card-custom" style="background-color: #94693e; width: 16rem;">
-                        <span class="mx-3">{{ post.created_at }}</span>
-                        <img
-                            src="{{ post.image }}"
-                            class="card-img-top"
-                            alt="Blup"
-                        />
-                        <div class="card-body">
-                            <h3 class="card-title">
-                                {{ post.user.name }}
-                            </h3>
-                            <h6 class="card-title">{{ post.title }}</h6>
-                            <p class="card-text">
-                                {{ post.description }}
-                            </p>
-                            <button class="btn btn-outline-light btn-sm w-100">
-                                <a href="/read-more">Читати більше</a>
-                            </button>
+                    <div class="card shadow-sm card-custom" style="background-color: #94693e; width: 20rem;">
+                        <div class="card-header d-flex justify-content-between">
+                            <strong>{{ post.user.name }}</strong>
+                            <span class="font-italic">{{ post.created_at }}</span>
                         </div>
+                        {% if post.image %}
+                            <img
+                                src="{{ post.image }}"
+                                class="card-img-top"
+                                alt="Blup"
+                            />
+                        {% else %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <p class="card-text"> {{ post.content }} </p>
+                            <!-- <button class="btn btn-outline-light btn-sm w-100">
+                                <a href="/read-more">Читати більше</a>
+                            </button> -->
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
     </div>    
-{% endif %}
+    {% endif %}
 
 {% endblock%}

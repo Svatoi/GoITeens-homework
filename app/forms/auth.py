@@ -33,4 +33,5 @@ class SignUpForm(FlaskForm):
 class ProfileForm(FlaskForm):
     name = StringField("Name")
     email = StringField("Email Address", [DataRequired(), Email()])
+    about = StringField("About")
     submit = SubmitField("Save")

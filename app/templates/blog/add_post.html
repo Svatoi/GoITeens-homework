@@ -12,15 +12,12 @@
                 <div class="offer-container">
                     <div class="form-group">
                         <label for="input-file" id="drop-area">
-                            <p class="text-muted mb-0">
-                                <div id="img-view">
-                                    <img src="#" alt="Drop">
-                                    <br><input type="file" accept="image/*" id="input-file">
-                                    <span><br>{{ form.image.label }}</span>
-                                </div>
-                            </p>
-                                {% for error in form.errors.image %}
-                            <small class="text-danger">{{error}}</small>
+                            <input type="file" name="image" accept="image/*" id="input-file" style="display: none;" multiple>
+                            <img src="{{url_for('static', filename='images\508-icon.png') }}" alt="Preview" id="image-preview">
+                            <p id="placeholder-text">{{ form.image.label }}</p>
+                            <label id="image-area"></label>
+                            {% for error in form.errors.image %}
+                                <small class="text-danger">{{error}}</small>
                             {% endfor %}
                         </label>
                     </div>
@@ -32,7 +29,7 @@
                     {% endfor %}
                 </div>
                 <div class="form-group">
-                    {{ form.content(class='form-control offer-description mt-4', placeholder='Опишіть свій пост') }}
+                    {{ form.content(class='form-control offer-description mt-4', style='resize: none; max-height: 200px; max-width: 300px;', rows='10', cols='15', placeholder='Опишіть свій пост') }}
                     {% for error in form.errors.content %}
                         <small class="text-danger">{{error}}</small>
                     {% endfor %}

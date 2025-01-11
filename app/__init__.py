@@ -12,7 +12,7 @@ db = SQLAlchemy()
     
 def create_app(environment="development"):
     from config import config
-    from .views import main_bp, auth_bp, blog_bp
+    from .views import main_bp, auth_bp, blog_bp, user_bp
     from .models import User, AnonymousUser
 
     app = Flask(__name__)
@@ -29,6 +29,7 @@ def create_app(environment="development"):
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(blog_bp)
+    app.register_blueprint(user_bp)
 
     @login_manager.user_loader
     def get_user(id):

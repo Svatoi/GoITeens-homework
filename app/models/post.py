@@ -9,7 +9,7 @@ class Post(db.Model, ModelMixin):
         db.Integer, db.ForeignKey("user.id"), nullable=False
     )
     title = db.Column(db.String(255), nullable=False)
-    content = db.Column(db.String, nullable=True)
+    content = db.Column(db.String(3500), nullable=True)
     image = db.Column(db.String(150), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
 

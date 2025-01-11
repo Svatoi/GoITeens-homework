@@ -32,6 +32,14 @@
           Контакти
         </a>
       </li>
+      <li>
+        <a
+          href="{{ url_for('user.profile') }}"
+          class="{{ 'active' if current_page == 'user.profile' else '' }}"
+        >
+          Профіль
+        </a>
+      </li>
     </ul>
   </nav>
   {% if current_user.is_authenticated %}

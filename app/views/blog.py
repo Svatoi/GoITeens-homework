@@ -20,27 +20,6 @@ def index():
         "blog/index.html", title="Блог", current_page=request.endpoint, check_posts=check_posts, posts=posts
     )
 
-@blog_bp.route("/upload", methods=["POST"])
-def upload_file():
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file part'}), 400
-    
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
-
-    # Проверяем папку для загрузки
-    upload_folder = os.path.join(os.getcwd(), UPLOAD_FOLDER)
-    if not os.path.exists(upload_folder):
-        os.makedirs(upload_folder)
-    
-    # Сохраняем файл
-    filepath = os.path.join(upload_folder, file.filename)
-    file.save(filepath)
-
-    file_url = url_for('static', filename=f'uploads/{file.filename}', _external=True)
-    return jsonify({'file_url': file_url}), 200
-
 @blog_bp.route("/post", methods=['GET', 'POST'])
 def add_post():
     form = PostForm(request.form)

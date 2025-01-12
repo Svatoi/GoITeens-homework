@@ -1,6 +1,22 @@
-{% extends "base.html"%}{% block content %} 
+{% extends "base.html"%}{% block content %}
 
-    <div class="container mt-4">
+    <div
+    class="d-flex justify-content-center align-items-center flex-grow-1 flex-column"
+    >
+        <div class="error-code fw-bold"> BOOOOM! </div>
+
+        <div class="error-description">А тут немає ще тих....чий пост став популярний!</div> 
+
+        <li>
+            <a
+            href="{{ url_for('main.popularity') }}"
+            >
+            <button type="button" class="btn btn-outline-dark rounded-3 px-4 py-2 mt-3">Зробити свій пост популярним</button>
+            </a>
+        </li>
+    </div>
+
+    <!-- <div class="container mt-4">
         <div class="row g-4">
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="card shadow-sm card-custom" style="background-color: #94693e; width: 25rem;">
@@ -21,6 +37,6 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>  -->
 
 {% endblock %}

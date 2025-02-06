@@ -4,3 +4,4 @@
 *.env
 *.flaskenv
 *test
+*assets

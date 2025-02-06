@@ -15,4 +15,4 @@
 - Frontend: HTML, CSS, JavaScript  
 - БД: SQLite  
 
-![HI](assets/cat-dance.gif)
+![HI](app\static\assets\cat-dance.gif)

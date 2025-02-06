@@ -1,32 +1,38 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container py-4">
-  <div class="card w-50 mx-auto">
-    <div class="card-header">
-      <h4 class="card-title">Sign In</h4>
+<div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
+  <form
+    class="form bg-signin"
+    role="form"
+    action="{{ url_for('auth.signin') }}"
+    method="post"
+  >
+    <div class="text-center mb-4">
+      <h1 class="fw-bold text-dark">Вхід</h1>
     </div>
-    <div class="card-body">
-      <form
-        class="form"
-        role="form"
-        action="{{ url_for('auth.signin') }}"
-        method="post"
-      >
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-          {{form.user_email.label}} {{form.user_email(class='form-control')}}
-        </div>
-        <div class="form-group">
-          {{form.password.label}} {{form.password(class='form-control')}}
-        </div>
-        {{form.submit(class='btn btn-primary mt-3')}}
-        <p>
-          Don't have an account?
-          <a href="{{ url_for('auth.signup') }}">Sign Up</a>.
-        </p>
-        <!-- <a href=" url_for('auth.forgot_password') ">Forgot password?</a> -->
-        <a href="/forgot-password">Forgot password?</a>
-      </form>
+
+    <div class="form-group mb-3">
+      {{ form.user_email.label(class="form-label") }}
+      {{ form.user_email(class="form-control") }}
     </div>
-  </div>
+
+    <div class="form-group mb-3">
+      {{ form.password.label(class="form-label") }}
+      {{ form.password(class="form-control") }}
+    </div>
+
+    <div class="text-center">
+      {{ form.submit(class="btn btn-primary w-100") }}
+    </div>
+
+    <div class="mt-3 text-center">
+      <p>
+        Не маєшь аккаунту?
+        <a href="{{ url_for('auth.signup') }}" class="text-primary">Зареєструватися</a>.
+      </p>
+      <p>
+        <a href=" url_for('auth.forgot_password') ">Забув пароль?</a>   
+    </p>
+    </div>
+  </form>
 </div>
 {% endblock %}

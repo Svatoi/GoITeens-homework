@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% block content%}
+<div class="d-flex justify-content-center align-items-start py-2">
+    <form
+    class="form"
+    role="form"
+    action="{{ form_action }}"
+    method="post"
+    enctype="multipart/form-data"
+    >
+    
+        <!-- <div class="text-center mb-3">
+            <h1 class="fw-bold text-dark">Редагування посту</h1>
+        </div> -->
+
+        <div class="bg-add_and_edit-post align-items-center">
+            <div class="add_and_edit-image">
+                <label for="input-file" class="drop-area" id="drop-image">
+                    <img src="{{ url_for('static', filename='image/drop-files.png') }}"/>
+                    
+                    <input type="file" name="image" id="input-file" accept="image/*" style="display: none;" multiple>
+                    
+                    <p id="placeholder-text">{{ form.image.label }}</p>
+
+                    {% for error in form.errors.image %}
+                    <small class="text-danger">{{error}}</small>
+                    {% endfor %}
+                </label>
+            </div>
+            <div class="add_and_edit-content">
+                <div class="edit  mt-4">
+                    {{ form.title(class="form-control") }}
+                    {% for error in form.errors.title %}
+                        <small class="text-danger">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                <div class="edit-description  mt-4">
+                    {{ form.content(
+                        class="form-control", 
+                        style='resize: none; max-height: 200px;', 
+                        rows='10', cols='15') }}
+                    {% for error in form.errors.content %}
+                        <small class="text-danger">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                {{ form.submit(class='btn btn-outline-dark mt-4', value='Зберегти зміни') }}
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

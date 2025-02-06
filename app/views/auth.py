@@ -14,16 +14,16 @@ def signin():
         user = User.authenticate(form.user_email.data, form.password.data)
         if user:
             login_user(user)
-            flash("SignIn successful.", "success")
+            flash("Вхід успішний.", "success")
             return redirect(url_for("main.index"))
-        flash("Wrong username or password.", "danger")
+        flash("Неправильний логін або пароль.", "danger")
     return render_template("auth/signin.html", form=form)
 
 
 @auth_bp.route("/sign-out", methods=["GET"])
 def signout():
     logout_user()
-    flash("Sign Out successful.", "success")
+    flash("Вихід успішний.", "success")
     return redirect(url_for("main.index"))
 
 
@@ -38,34 +38,13 @@ def signup():
         )
         user.save()
         login_user(user)
-        flash("Registration successful. You are logged in.", "success")
+        flash("Реєстрація успішна. Ви увійшли в систему.", "success")
         return redirect(url_for("main.index"))
     elif form.is_submitted():
-        flash("The given data was invalid.", "danger")
+        flash("Надані дані були недійсними.", "danger")
     return render_template("auth/signup.html", form=form)
 
 @auth_bp.route('/logout')
 def logout():
     logout_user() 
     return redirect(url_for('index'))
-
-@auth_bp.route("/settings", methods=["GET", "POST"])
-def settings():
-    user = User.query.get(current_user.id)
-    form = ProfileForm()
-
-    if form.validate_on_submit():
-        user.name = form.name.data
-        user.email = form.email.data
-        user.about = form.about.data
-        user.save()
-
-        flash("Profile has been successfully updated", "info")
-        return redirect(url_for("main.index"))
-    elif form.is_submitted():
-        flash("The given data was invalid.", "danger")
-    elif request.method == "GET":
-        form.name.data = user.name
-        form.email.data = user.email
-        form.about.data = user.about
-    return render_template("auth/settings.html", form=form)

@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block content%} 
+<div class="container py-4">
+    <div class="card w-75 mx-auto">
+      <div class="card-header d-flex justify-content-between align-items-center" style="height: 50px;">
+          <span class="fw-bold">Author: {{ post.user.name }}</span>
+          {% if (current_user.id) and (current_user.id == post.user_id) %}
+          <div>
+            <a
+              href="{{url_for('blog.edit_post', post_id = post.id, post_title=post.title) }}"
+              class="btn-custom btn-dark"
+            >
+              <span>Редагувати</span>
+            </a>
+            <a
+              href="#"
+              onclick="deletePost({{ post.id }})"
+              class="btn-custom btn-dark"
+            >
+              <span>Видалити</span>
+            </a>
+          </div>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <h1>{{post.title}}</h1>
+          <hr class="title-divider">
+          <p>{{post.content}}</p>
+          {% if post.image %}
+            <img
+            src="{{ url_for('static', filename='uploads/test.jpg') }}"
+            alt="Blup"
+            style="border-radius: 5px; width: auto; margin-bottom: 10px;"
+            />
+          {% endif %}
+          <br><span class="fw-bold">Створено в: {{ post.created_at }}</span>
+        </div>
+    </div>
+  </div>
+{% endblock %} {% block scripts %}
+<script>
+  const deletePost = (postId) => {
+    fetch(`/blog/post/${postId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.redirected) {
+          console.log("ВИДАЛЕНО ВАУ");
+          window.location.href = response.url;
+        } else {
+          console.error("Не вдалося видалити пост: ", response.statusText);
+          alert("Не вдалося видалити пост.");
+        }
+      })
+      .catch((error) => {
+        console.error("Не вдалося видалити пост:", error);
+        alert("Під час видалення поста сталася помилка.");
+      });
+  };
+</script>
+{% endblock %}

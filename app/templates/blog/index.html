@@ -7,14 +7,10 @@
             <div class="error-code fw-bold"> WOOOOPS </div>
         
             <div class="error-description">А в тебе немає...немає)) знаєш що в тебе немає?...Звісно!!! Постів в тебе нема!</div> 
-
-            <li>
-                <a
-                href="{{ url_for('blog.add_post') }}"
-                class="{{ 'active' if current_page == 'blog.add_post' else '' }}"
-                >
+            
+            <a href="{{ url_for('blog.add_post') }}" class="{{ 'active' if current_page == 'blog.add_post' else '' }}">
                 <button type="button" class="btn btn-outline-dark rounded-3 px-4 py-2 mt-3">Зробити пост</button>
-            </li>
+            </a>
         </div>
     {% else %}
     <div class="d-flex flex-column align-items-center">
@@ -22,24 +18,32 @@
             <div class="row g-4 justify-content-center">
                 {% for post in posts | sort(attribute="created_at", reverse=True) %}
                 <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card shadow-sm card-custom" style="background-color: #94693e; width: 20rem;">
+                    <div class="card shadow-sm card-custom" style="background-color:rgb(255, 255, 255); width: 20rem;">
                         <div class="card-header d-flex justify-content-between">
                             <strong>{{ post.user.name }}</strong>
                             <span class="font-italic">{{ post.created_at }}</span>
                         </div>
                         {% if post.image %}
-                            <img
-                                src="{{ post.image }}"
+                            <div class="card-body">
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <img
+                                src="{{ url_for('static', filename='uploads/test.jpg') }}"
                                 class="card-img-top"
                                 alt="Blup"
-                            />
+                                />
+                                <a href="{{ url_for('blog.view_post', post_id=post.id, post_title=post.title) }}">
+                                    <button class="btn btn-outline-dark mt-2">
+                                        Читати більше
+                                    </button>
+                                </a>
+                            </div>
                         {% else %}
                         <div class="card-body">
                             <h5 class="card-title">{{ post.title }}</h5>
-                            <p class="card-text"> {{ post.content }} </p>
-                            <!-- <button class="btn btn-outline-light btn-sm w-100">
-                                <a href="/read-more">Читати більше</a>
-                            </button> -->
+                            <p class="card-text text-dark"> {{ post.content }} </p>
+                            <button class="btn btn-outline-dark mt-2">
+                                <a href="{{ url_for('blog.view_post', post_id=post.id, post_title=post.title) }}">Читати більше</a>
+                            </button>
                         </div>
                         {% endif %}
                     </div>
@@ -47,7 +51,8 @@
                 {% endfor %}
             </div>
         </div>
-    </div>    
+    </div>     
     {% endif %}
+    
 
-{% endblock%}
+{% endblock %}

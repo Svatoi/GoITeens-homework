@@ -1,48 +1,39 @@
-{% extends "base.html" %} {% block content%}
+{% extends "base.html" %}
+{% block content %}
 <div class="d-flex justify-content-center align-items-start py-4">
     <!-- Профиль -->
     <div class="bg-user-profile d-flex">
         <div class="profile me-4">
             <img
-                src="{{ url_for('static', filename='images/avatar-test.jpg') }}"
+                src="{{ url_for('static', filename='image/avatar-test.jpg') }}"
                 alt="User Avatar"
                 class="avatar-user"
             />
             <div class="profile-info">
                 <h1 class="profile-name">{{ user_info.name }}</h1>
                 <p class="profile-email">{{ user_info.email }}</p>
-            {% if user_info.about != null %}
-                <p class="profile-about">{{ user_info.about }}</p>
-            {% else %}
-                <p class="profile-about">WOOOOPS в тебе немає інформації про себе, добавь її в настройках <br>⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇</p>
-            {% endif %}
+                {% if user_info.about != null %}
+                    <p class="profile-about">{{ user_info.about }}</p>
+                {% else %}
+                    <p class="profile-about">У вас немає інформації про себе. Додайте її в налаштуваннях.<br>⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇</p>
+                {% endif %}
                 <li>
-                    <a
-                    href="{{ url_for('auth.settings')}}"
-                    class="{{ 'active' if current_page == 'auth.settings' else '' }}"
-                    > </a>
-                    <button class="edit-profile">
-                        Edit profile
-                    </button>
+                    <a href="{{ url_for('user.settings') }}" class="{{ 'active' if current_page == 'user.settings' else '' }}">
+                        <button class="edit-profile">Редактувати профіль</button>
+                    </a>
                 </li>
             </div>
         </div>
         <!-- Блог -->
         {% if not check_posts %}
-        <div
-            class="d-flex justify-content-center align-items-center flex-grow-1 flex-column"
-            >
-            <div class="error-code fw-bold"> WOOOOPS </div>
-        
-            <div class="error-description">А в тебе немає...немає)) знаєш що в тебе немає?...Звісно!!! Постів в тебе нема!</div> 
-
+        <div class="d-flex justify-content-center align-items-center flex-grow-1 flex-column">
+            <div class="error-code fw-bold">WOOOOPS</div>
+            <div class="error-description">А в вас немає постів</div>
             <li>
-                <a
-                href="{{ url_for('blog.add_post') }}"
-                class="{{ 'active' if current_page == 'blog.add_post' else '' }}"
-                > </a>
+                <a href="{{ url_for('blog.add_post') }}" class="{{ 'active' if current_page == 'blog.add_post' else '' }}">
+                </a>
                 <button type="button" class="btn btn-outline-dark rounded-3 px-4 py-2 mt-3">
-                    <strong class="text-button">Зробити пост</strong>
+                    <strong class="text-button">Створити пост</strong>
                 </button>
             </li>
         </div>
@@ -50,12 +41,12 @@
         <div class="user-blog">
             <div class="container">
                 <div class="row g-4">
-                    {% for post in posts | sort(attribute="created_at", reverse=True) %}
+                    {% for post in posts[:3] | sort(attribute="created_at", reverse=True) %}
                     <div class="col-6 col-md-4 col-lg-4">
-                        <div class="card shadow-sm card-custom" style="background-color: #94693e;">
+                        <div class="card shadow-sm card-custom">
                             <div class="card-header d-flex justify-content-between">
-                                <strong>{{ post.user.name }}</strong>
-                                <span class="font-italic">{{ post.created_at }}</span>
+                                <strong class="text-dark">{{ post.user.name }}</strong>
+                                <span class="font-italic text-dark">{{ post.created_at }}</span>
                             </div>
                             {% if post.image %}
                             <img
@@ -65,8 +56,11 @@
                             />
                             {% endif %}
                             <div class="card-body">
-                                <h5 class="card-title">{{ post.title }}</h5>
-                                <p class="card-text">{{ post.content }}</p>
+                                <h5 class="card-title text-dark">{{ post.title }}</h5>
+                                <p class="card-text text-dark">{{ post.content|truncate(100, True, '...') }}</p>
+                                <a href="{{ url_for('blog.view_post', post_id=post.id, post_title=post.title) }}" class="btn btn-outline-dark text-dark">
+                                    Читати далі
+                                </a>
                             </div>
                         </div>
                     </div>

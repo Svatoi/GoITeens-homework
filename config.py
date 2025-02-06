@@ -7,7 +7,7 @@ class BaseConfig:
     """Базова конфігурація"""
 
     APP_NAME = os.getenv("APP_NAME", "Topchik")
-    SECRET_KEY = os.getenv("SECRET_KEY", "Wop, secret key not here, HAHA!")
+    SECRET_KEY = os.getenv("SECRET_KEY", "Вап, секретного ключа тут немає, ХА-ХА!")
     UPLOAD_FOLDER = os.path.join(BASE_DIR, "app", "static", "uploads")
     DEBUG_TB_ENABLED = False
     WTF_CSRF_ENABLED = False

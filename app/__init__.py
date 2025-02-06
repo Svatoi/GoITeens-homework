@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template
 # LoginManager - для працювання з користувачами а саме запис їх сеансів
+from flask_cors import CORS
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 
@@ -8,7 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.exceptions import HTTPException
 
 login_manager = LoginManager()
-db = SQLAlchemy()
+db = SQLAlchemy(session_options={"autoflush": False})
     
 def create_app(environment="development"):
     from config import config
@@ -16,6 +17,7 @@ def create_app(environment="development"):
     from .models import User, AnonymousUser
 
     app = Flask(__name__)
+    CORS(app)
 
     env = os.getenv("FLASK_ENV", environment)
     app.config.from_object(config[env])

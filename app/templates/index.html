@@ -6,7 +6,7 @@
         <div class="error-code fw-bold"> BOOOOM! </div>
 
         <div class="error-description">А тут немає ще тих....чий пост став популярний!</div> 
-
+        {% if current_user.is_authenticated %}
         <li>
             <a
             href="{{ url_for('main.popularity') }}"
@@ -14,6 +14,7 @@
             <button type="button" class="btn btn-outline-dark rounded-3 px-4 py-2 mt-3">Зробити свій пост популярним</button>
             </a>
         </li>
+        {% endif %}
     </div>
 
     <!-- <div class="container mt-4">

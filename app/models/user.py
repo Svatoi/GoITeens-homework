@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 class User(db.Model, ModelMixin, UserMixin):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     email = db.Column(db.String(320), unique=True)
     about = db.Column(db.String(320))

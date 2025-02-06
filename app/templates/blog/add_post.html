@@ -1,46 +1,50 @@
 {% extends "base.html" %} {% block content%} 
+<div class="d-flex justify-content-center align-items-start py-2">
+    <form
+        class="form"
+        role="form"
+        action="{{ url_for('blog.add_post') }}"
+        method="post"
+    >
+        <div class="bg-add_and_edit-post align-items-center">
+                        <div class="add_and_edit-image">
+                                <label for="input-file" class="drop-area" id="drop-image">
+                                    <img src="{{ url_for('static', filename='image/drop-files.png') }}"/>
+                                    
+                                    <input type="file" name="image" accept="image/*" id="input-file" style="display: none;" multiple>
+                                    
+                                    <p id="placeholder-text">{{ form.image.label }}</p>
 
-<form
-    class="form"
-    role="form"
-    action="{{ url_for('blog.add_post') }}"
-    method="post"
->
-<div class="d-flex justify-content-center align-items-center container py-4" style="opacity: 0.7">
-        <div class="row align-items-center mt-5">
-            <div class="col-md-6">
-                <div class="offer-container">
-                    <div class="form-group">
-                        <label for="input-file" id="drop-area">
-                            <input type="file" name="image" accept="image/*" id="input-file" style="display: none;" multiple>
-                            <img src="{{url_for('static', filename='images\508-icon.png') }}" alt="Preview" id="image-preview">
-                            <p id="placeholder-text">{{ form.image.label }}</p>
-                            <label id="image-area"></label>
-                            {% for error in form.errors.image %}
-                                <small class="text-danger">{{error}}</small>
-                            {% endfor %}
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group"> 
-                    {{ form.title(class='form-control offer-title mt-4', placeholder='Назва посту') }} 
-                    {% for error in form.errors.title %}
-                        <small class="text-danger">{{error}}</small>
-                    {% endfor %}
-                </div>
-                <div class="form-group">
-                    {{ form.content(class='form-control offer-description mt-4', style='resize: none; max-height: 200px; max-width: 300px;', rows='10', cols='15', placeholder='Опишіть свій пост') }}
-                    {% for error in form.errors.content %}
-                        <small class="text-danger">{{error}}</small>
-                    {% endfor %}
-                </div>
+                                    <label id="image-area"></label>
 
-                <div class="text-end mt-4">
-                    {{ form.submit(class='btn btn-outline-dark rounded-3 px-4 py-2 mt-3', style='min-width: 100px; min-height: 50px;') }}
-                </div>
-            </div>
+                                    {% for error in form.errors.image %}
+                                        <small class="text-danger">{{error}}</small>
+                                    {% endfor %}
+                                </label>
+                        </div>
+                        <div class="add_and_edit-content"> 
+                            <div class="offer-title mt-4">
+                                    {{ form.title(
+                                        class='form-control', 
+                                        placeholder='Назва посту') }} 
+                                    {% for error in form.errors.title %}
+                                        <small class="text-danger">{{error}}</small>
+                                    {% endfor %}
+                            </div>
+                            <div class="add-description mt-4">
+                                {{ form.content(
+                                    class='form-control',
+                                    style='resize: none; max-height: 200px;', 
+                                    rows='10', cols='15', 
+                                    placeholder='Опишіть свій пост') }}
+                                {% for error in form.errors.content %}
+                                    <small class="text-danger">{{error}}</small>
+                                {% endfor %}
+                            </div>
+                            {{ form.submit(class='btn btn-outline-dark mt-3') }}
+                        </div>
         </div>
+    </form>
 </div>
-</form>
 
 {% endblock%}

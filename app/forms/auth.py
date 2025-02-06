@@ -6,32 +6,32 @@ from app.models import User
 
 
 class SignInForm(FlaskForm):
-    user_email = StringField("Email", [DataRequired()])
-    password = PasswordField("Password", [DataRequired()])
-    submit = SubmitField("SignIn")
+    user_email = StringField("Почта", [DataRequired()])
+    password = PasswordField("Пароль", [DataRequired()])
+    submit = SubmitField("Війти")
 
 
 class SignUpForm(FlaskForm):
-    name = StringField("Name")
+    name = StringField("Ім'я")
     email = StringField(
-        "Email Address",
+        "Електронна адреса",
         [
             DataRequired(),
             Email(),
         ],
     )
-    password = PasswordField("Password", [DataRequired(), Length(6, 30)])
+    password = PasswordField("Пароль", [DataRequired(), Length(6, 30)])
     password_confirmation = PasswordField(
-        "Confirm Password", [DataRequired(), EqualTo("password")]
+        "Підтвердити пароль", [DataRequired(), EqualTo("password")]
     )
-    submit = SubmitField("Sign Up")
+    submit = SubmitField("Реєстрація")
 
     def validate_email(form, field):
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError("This email is already signed up.")
+            raise ValidationError("Ця електронна адреса вже зареєстрована.")
         
 class ProfileForm(FlaskForm):
-    name = StringField("Name")
-    email = StringField("Email Address", [DataRequired(), Email()])
-    about = StringField("About")
-    submit = SubmitField("Save")
+    name = StringField("Ім'я")
+    email = StringField("Електронна адреса", [DataRequired(), Email()])
+    about = StringField("Про себе")
+    submit = SubmitField("Зберегти")
